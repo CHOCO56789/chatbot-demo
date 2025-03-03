@@ -28,6 +28,7 @@ yarn-error.log*
 .vscode/
 *.swp
 *.swo
+.editorconfig
 
 # Firebase関連（既に一部含まれていますが補完）
 firebase-debug.log*
