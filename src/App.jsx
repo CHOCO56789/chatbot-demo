@@ -1,7 +1,9 @@
 import React from "react";
-import defaultDataset from "./dataset";
+//import defaultDataset from "./dataset";
 import "./assets/styles/style.css";
 import { AnswersList, Chats, FormDialog } from "./components"; //'./components/index';の省略
+import { db } from "./firebase/index";
+import { collection, getDocs } from "firebase/firestore";
 
 export default class App extends React.Component {
     //初期化
@@ -11,7 +13,7 @@ export default class App extends React.Component {
             answers: [],
             chats: [],
             currentId: "init",
-            dataset: defaultDataset,
+            dataset: {},
             open: false,
         };
         //コールバック関数はここでバインドすることで、再度生成されずにパフォーマンスがあがる
@@ -82,9 +84,25 @@ export default class App extends React.Component {
         this.setState({ open: false });
     };
 
+    initDataset = (dataset) => {
+        this.setState({ dataset });
+    };
+
     componentDidMount() {
-        // 初期メッセージのみを表示
-        this.displayNextQuestion(this.state.currentId);
+        (async () => {
+            const dataset = this.state.dataset;
+            const questionsCol = collection(db, "questions");
+            const questionsSnapshot = await getDocs(questionsCol);
+            questionsSnapshot.forEach((doc) => {
+                const id = doc.id;
+                const data = doc.data();
+                dataset[id] = data;
+            });
+
+            this.initDataset(dataset);
+            const initAnswer = "";
+            this.selectAnswer(initAnswer, this.state.currentId);
+        })();
     }
     componentDidUpdate() {
         const scrollArea = document.getElementById("scroll-area");
