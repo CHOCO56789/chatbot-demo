@@ -1,18 +1,53 @@
-# Getting Started with Create React App
+# チャットボットアプリケーション
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+このプロジェクトはReactを使用した対話型チャットボットアプリケーションです。ユーザーからの質問に対して事前に設定された回答を提供し、必要に応じて外部リンクへの誘導やお問い合わせフォームを表示します。
 
-## Available Scripts
+## セットアップ方法
 
-In the project directory, you can run:
+1. リポジトリをクローンする
+   ```
+   git clone [リポジトリのURL]
+   ```
+
+2. 依存パッケージをインストールする
+   ```
+   npm install
+   ```
+
+3. アプリケーションを起動する
+   ```
+   npm start
+   ```
+   ブラウザで [http://localhost:3000](http://localhost:3000) を開いてアプリケーションを確認できます。
+
+## 機能
+
+- 対話型チャットインターフェース
+- 複数の選択肢から回答を選択
+- 外部リンクへの誘導
+- お問い合わせフォーム
+
+## プロジェクト構成
+
+- `src/App.jsx`: メインのアプリケーションコンポーネント
+- `src/dataset.js`: チャットの質問と回答のデータセット
+- `src/components/`: UIコンポーネント（Chats, AnswersList, FormDialog）
+
+# Create React Appについて
+
+このプロジェクトは [Create React App](https://github.com/facebook/create-react-app) でブートストラップされています。
+
+## 利用可能なスクリプト
+
+プロジェクトディレクトリで以下のコマンドを実行できます：
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+開発モードでアプリを実行します。\
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いて表示できます。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+コードを変更すると、ページは自動的に再読み込みされます。\
+コンソールに構文エラーも表示されます。
 
 ### `npm test`
 
