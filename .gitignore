@@ -34,6 +34,7 @@ yarn-error.log*
 firebase-debug.log*
 .firebase/
 .firebaserc
+firebase/
 
 # ビルド関連の追加項目
 .env
